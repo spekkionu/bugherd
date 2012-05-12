@@ -3,7 +3,7 @@
     "type": "library",
     "description": "BugHerd API Libraries for PHP",
     "keywords": ["bugherd","api"],
-    "homepage": "http://github.com/spekkionu/bugherd",
+    "homepage": "https://github.com/spekkionu/bugherd",
     "license": "New BSD",
     "authors": [
         {
