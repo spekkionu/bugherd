@@ -1,0 +1,26 @@
+{
+    "name": "bugherd/bugherd",
+    "type": "library",
+    "description": "BugHerd API Libraries for PHP",
+    "keywords": ["bugherd","api"],
+    "homepage": "http://github.com/spekkionu/bugherd",
+    "license": "New BSD",
+    "authors": [
+        {
+            "name": "Jonathan Bernardi",
+            "email": "spekkionu@gmail.com",
+            "homepage": "http://www.spekkionu.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.0",
+        "ext-curl": "*",
+        "ext-simplexml": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "BugHerd": "lib"
+        }
+    }
+}

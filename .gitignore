@@ -1,0 +1,31 @@
+
+# Ignore test config
+/tests/config.ini
+
+# OS Files
+Thumbs.db
+.DS_Store
+
+# IDE Files
+.buildpath
+.externalToolBuilders
+.project
+.settings
+nbproject
+*.LCK
+*.kpf
+*.komodoproject
+.tmp_*
+_notes
+.idea
+.cache
+*.sublime-project
+*.sublime-workspace
+
+# Source Control
+.svn
+.hg
+.hgignore
+.hgexternals
+CVS
+.bzr
