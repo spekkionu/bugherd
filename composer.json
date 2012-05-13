@@ -14,13 +14,13 @@
         }
     ],
     "require": {
-        "php": ">=5.2.0",
+        "php": ">=5.2.4",
         "ext-curl": "*",
         "ext-simplexml": "*"
     },
     "autoload": {
         "psr-0": {
-            "BugHerd": "lib"
+            "BugHerd_": "lib"
         }
     }
 }
