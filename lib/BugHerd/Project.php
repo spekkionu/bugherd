@@ -287,11 +287,11 @@ class BugHerd_Project
     if (isset($xml['is-active'])) {
       $project->setActive($xml['is-active']);
     }
-    if (property_exists($xml,'created-at')) {
+    if (property_exists($xml, 'created-at')) {
       $property = 'created-at';
       $project->setCreated($xml->$property);
     }
-    if (property_exists($xml,'updated-at')) {
+    if (property_exists($xml, 'updated-at')) {
       $property = 'created-at';
       $project->setUpdated($xml->$property);
     }

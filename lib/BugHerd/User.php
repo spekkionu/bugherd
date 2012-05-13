@@ -278,11 +278,11 @@ class BugHerd_User
     $user->setName($xml->name);
     $user->setSurName($xml->surname);
     $user->setEmail($xml->email);
-    if (property_exists($xml,'created-at')) {
+    if (property_exists($xml, 'created-at')) {
       $property = 'created-at';
       $user->setCreated($xml->$property);
     }
-    if (property_exists($xml,'updated-at')) {
+    if (property_exists($xml, 'updated-at')) {
       $property = 'created-at';
       $user->setUpdated($xml->$property);
     }

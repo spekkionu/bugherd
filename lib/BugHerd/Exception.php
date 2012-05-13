@@ -7,11 +7,12 @@
  * @license New BSD http://www.opensource.org/licenses/bsd-license.php
  * @package BugHerd
  */
-class BugHerd_Exception extends Exception {
-
+class BugHerd_Exception extends Exception
+{
   /**
    * Error code for when json extension is missing
    */
+
   const CODE_NO_JSON = 1001;
 
   /**
@@ -34,4 +35,5 @@ class BugHerd_Exception extends Exception {
    * Response contained invalid xml
    */
   const CODE_INVALID_XML = 1005;
+
 }

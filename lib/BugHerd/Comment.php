@@ -245,15 +245,15 @@ class BugHerd_Comment
     }
     $comment->setId($xml->id);
     $comment->setText($xml->text);
-    if (property_exists($xml,'user-id')) {
+    if (property_exists($xml, 'user-id')) {
       $property = 'user-id';
       $comment->setUserId($xml->$property);
     }
-    if (property_exists($xml,'created-at')) {
+    if (property_exists($xml, 'created-at')) {
       $property = 'created-at';
       $comment->setCreated($xml->$property);
     }
-    if (property_exists($xml,'updated-at')) {
+    if (property_exists($xml, 'updated-at')) {
       $property = 'created-at';
       $comment->setUpdated($xml->$property);
     }

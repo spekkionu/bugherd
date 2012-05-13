@@ -48,7 +48,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
   public function testGetAccountCredentials() {
     $api = new BugHerd_Api('email@address.com', 'password');
     $credentials = $api->getAccountCredentials();
-    $this->assertEquals($credentials, array('email'=>'email@address.com','password'=>'password'));
+    $this->assertEquals($credentials, array('email' => 'email@address.com', 'password' => 'password'));
   }
 
   /**
@@ -58,12 +58,12 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
     $api = new BugHerd_Api('email@address.com', 'password');
     // Assert that the api credentials are the initial values
     $credentials = $api->getAccountCredentials();
-    $this->assertEquals($credentials, array('email'=>'email@address.com','password'=>'password'));
+    $this->assertEquals($credentials, array('email' => 'email@address.com', 'password' => 'password'));
     // Set new credential values
     $api->setAccountCredentials('email2@address.com', 'password2');
     // Assert that the credentials changed to the new values
     $credentials = $api->getAccountCredentials();
-    $this->assertEquals($credentials, array('email'=>'email2@address.com','password'=>'password2'));
+    $this->assertEquals($credentials, array('email' => 'email2@address.com', 'password' => 'password2'));
   }
 
   /**
@@ -147,13 +147,12 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
     $this->assertInstanceOf('BugHerd_Project', $result);
     // Delete the created project
     $api->deleteProject($result->getId());
-    try{
+    try {
       $project = $api->showProject($project->getId());
       $this->assertNotInstanceOf('BugHerd_Project', $project);
-    }catch(Exception $e){
+    } catch (Exception $e) {
       // Exception should be thrown
     }
-
   }
 
   /**
@@ -316,5 +315,4 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
   }
 
 }
-
 

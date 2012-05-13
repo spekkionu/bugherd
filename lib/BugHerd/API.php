@@ -73,11 +73,11 @@ class BugHerd_Api
    * @return array
    */
   public function listUsers() {
-    $url = self::URL."/".self::VERSION."/users.xml";
+    $url = self::URL . "/" . self::VERSION . "/users.xml";
     $method = "GET";
     $xml = $this->_sendRequest($url, $method);
     $users = array();
-    foreach($xml->user as $user){
+    foreach ($xml->user as $user) {
       $users[] = BugHerd_User::fromXml($user);
     }
     return $users;
@@ -89,11 +89,11 @@ class BugHerd_Api
    * @return array
    */
   public function listProjects() {
-    $url = self::URL."/".self::VERSION."/projects.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects.xml";
     $method = "GET";
     $xml = $this->_sendRequest($url, $method);
     $projects = array();
-    foreach($xml->project as $project){
+    foreach ($xml->project as $project) {
       $projects[] = BugHerd_Project::fromXml($project);
     }
     return $projects;
@@ -108,10 +108,10 @@ class BugHerd_Api
    * @return BugHerd_Project
    */
   public function showProject($project_id) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}.xml";
     $method = "GET";
     $xml = $this->_sendRequest($url, $method);
-    return  BugHerd_Project::fromXml($xml);
+    return BugHerd_Project::fromXml($xml);
   }
 
   /**
@@ -123,7 +123,7 @@ class BugHerd_Api
    * @return BugHerd_Project Added project
    */
   public function createProject(BugHerd_Project $project) {
-    $url = self::URL."/".self::VERSION."/projects.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects.xml";
     $method = "POST";
     $xml = $project->toXml();
     $xml = $this->_sendRequest($url, $method, $xml);
@@ -140,7 +140,7 @@ class BugHerd_Api
    * @return boolean True if successful
    */
   public function updateProject($project_id, BugHerd_Project $project) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}.xml";
     $method = "PUT";
     $xml = $project->toXml();
     return $this->_sendRequest($url, $method, $xml);
@@ -153,7 +153,7 @@ class BugHerd_Api
    * @return boolean True if sucessful
    */
   public function deleteProject($project_id) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}.xml";
     $method = "DELETE";
     return $this->_sendRequest($url, $method);
   }
@@ -165,11 +165,11 @@ class BugHerd_Api
    * @return array
    */
   public function listTasks($project_id) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}/tasks.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}/tasks.xml";
     $method = "GET";
     $xml = $this->_sendRequest($url, $method);
     $results = array();
-    foreach($xml->task as $task){
+    foreach ($xml->task as $task) {
       $results[] = BugHerd_Task::fromXml($task);
     }
     return $results;
@@ -183,7 +183,7 @@ class BugHerd_Api
    * @return array
    */
   public function showTask($project_id, $task_id) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}/tasks/{$task_id}.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}/tasks/{$task_id}.xml";
     $method = "GET";
     $xml = $this->_sendRequest($url, $method);
     return BugHerd_Task::fromXml($xml);
@@ -198,7 +198,7 @@ class BugHerd_Api
    * @param BugHerd_Task $task
    */
   public function createTask($project_id, BugHerd_Task $task) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}/tasks.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}/tasks.xml";
     $method = "POST";
     $xml = $task->toXml();
     $xml = $this->_sendRequest($url, $method, $xml);
@@ -213,7 +213,7 @@ class BugHerd_Api
    * @param BugHerd_Task $task
    */
   public function updateTask($project_id, $task_id, BugHerd_Task $task) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}/tasks/{$task_id}.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}/tasks/{$task_id}.xml";
     $method = "PUT";
     $xml = $task->toXml();
     return $this->_sendRequest($url, $method, $xml);
@@ -227,11 +227,11 @@ class BugHerd_Api
    * @return array
    */
   public function listComments($project_id, $task_id) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}/tasks/{$task_id}/comments.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}/tasks/{$task_id}/comments.xml";
     $method = "GET";
     $xml = $this->_sendRequest($url, $method);
     $results = array();
-    foreach($xml->comment as $comment){
+    foreach ($xml->comment as $comment) {
       $results[] = BugHerd_Comment::fromXml($comment);
     }
     return $results;
@@ -246,7 +246,7 @@ class BugHerd_Api
    * @return array
    */
   public function showComment($project_id, $task_id, $comment_id) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}/tasks/{$task_id}/comments/{$comment_id}.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}/tasks/{$task_id}/comments/{$comment_id}.xml";
     $method = "GET";
     $xml = $this->_sendRequest($url, $method);
     return BugHerd_Comment::fromXml($xml);
@@ -259,7 +259,7 @@ class BugHerd_Api
    * @param BugHerd_Comment $comment The comment itself
    */
   public function createComment($project_id, $task_id, BugHerd_Comment $comment) {
-    $url = self::URL."/".self::VERSION."/projects/{$project_id}/tasks/{$task_id}/comments.xml";
+    $url = self::URL . "/" . self::VERSION . "/projects/{$project_id}/tasks/{$task_id}/comments.xml";
     $method = "POST";
     $xml = $comment->toXml();
     $xml = $this->_sendRequest($url, $method, $xml);
@@ -282,7 +282,7 @@ class BugHerd_Api
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_USERPWD, $this->_credentials['email'] . ":" . $this->_credentials['password']);
-    switch($method){
+    switch ($method) {
       case "POST":
         curl_setopt($ch, CURLOPT_POST, true);
         break;
@@ -297,41 +297,41 @@ class BugHerd_Api
         curl_setopt($ch, CURLOPT_HTTPGET, 1);
         break;
     }
-    if($xml){
+    if ($xml) {
       curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml"));
       curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
     }
     $response = curl_exec($ch);
     $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    if($response === false){
+    if ($response === false) {
       // No response received
       $error = curl_error($ch);
       $errorno = curl_errno($ch);
       curl_close($ch);
       throw new BugHerd_Exception($error, $errorno);
-    }elseif($status == 404){
+    } elseif ($status == 404) {
       // The url was incorrect
       throw new BugHerd_Exception("The requested url was not found.", $status);
-    }elseif(mb_substr($status,0,1) != '2'){
+    } elseif (mb_substr($status, 0, 1) != '2') {
       // Not a sucessful status code
       $xml = @simplexml_load_string($response);
-      if($xml === false){
+      if ($xml === false) {
         curl_close($ch);
         throw new BugHerd_Exception("Invalid xml response", BugHerd_Exception::CODE_INVALID_XML);
       }
-      if(is_array($xml->error)){
+      if (is_array($xml->error)) {
         $errors = array();
-        foreach($xml->error as $error){
+        foreach ($xml->error as $error) {
           $errors[] = (string) $error;
         }
         $error = implode(PHP_EOL, $errors);
-      }else{
+      } else {
         $error = (string) $xml->error;
       }
       // Build Error
       curl_close($ch);
       throw new BugHerd_Exception($error, $status);
-    }else{
+    } else {
       // Sucessful response
       curl_close($ch);
       $xml = @simplexml_load_string($response);
