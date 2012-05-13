@@ -64,6 +64,18 @@ Installation
 
 3. Run Composer: `php composer.phar install`
 
+Running Tests
+-------------
+
+1. Copy or rename sample.config.ini as config.ini inside the tests directory.
+
+2. Edit the tests/config.ini file to add the email address and password of the account to test with.
+
+3. Run phpunit on tests/BugHerd_ApiTest.php
+
+**Warning** This will run tests on the account.  Test projects will be created to run tests on and removed as the tests complete.
+If a test fails the test project may fail to be deleted and must be removed maually.
+
 License
 -------
 

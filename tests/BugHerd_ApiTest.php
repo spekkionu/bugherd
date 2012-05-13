@@ -6,7 +6,7 @@ require_once(dirname(__FILE__) . '/../lib/BugHerd/Task.php');
 require_once(dirname(__FILE__) . '/../lib/BugHerd/User.php');
 require_once(dirname(__FILE__) . '/../lib/BugHerd/Comment.php');
 require_once(dirname(__FILE__) . '/../lib/BugHerd/Exception.php');
-require_once(dirname(__FILE__) . '/../lib/BugHerd/API.php');
+require_once(dirname(__FILE__) . '/../lib/BugHerd/Api.php');
 
 /**
  * Test class for BugHerd_Api.
