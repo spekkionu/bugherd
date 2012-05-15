@@ -111,8 +111,8 @@ class BugHerd_TaskTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Task::getName()
-   * @covers BugHerd_Task::setName()
+   * @covers BugHerd_Task::getCreated()
+   * @covers BugHerd_Task::setCreated()
    */
   public function testSetCreated() {
     $task = new BugHerd_Task();
@@ -123,8 +123,8 @@ class BugHerd_TaskTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Task::getName()
-   * @covers BugHerd_Task::setName()
+   * @covers BugHerd_Task::getUpdated()
+   * @covers BugHerd_Task::setUpdated()
    */
   public function testSetUpdated() {
     $task = new BugHerd_Task();

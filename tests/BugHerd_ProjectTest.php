@@ -56,8 +56,8 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::getName()
-   * @covers BugHerd_Project::setName()
+   * @covers BugHerd_Project::getCreated()
+   * @covers BugHerd_Project::setCreated()
    */
   public function testSetCreated() {
     $project = new BugHerd_Project();
@@ -68,8 +68,8 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::getName()
-   * @covers BugHerd_Project::setName()
+   * @covers BugHerd_Project::getUpdated()
+   * @covers BugHerd_Project::setUpdated()
    */
   public function testSetUpdated() {
     $project = new BugHerd_Project();
