@@ -1,6 +1,7 @@
 
 # Ignore test config
 /tests/config.ini
+/build
 
 # OS Files
 Thumbs.db
