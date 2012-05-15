@@ -12,10 +12,8 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
 
 
   /**
-   * @covers BugHerd_Comment::setId
-   * @covers BugHerd_Comment::getId
-   * @covers BugHerd_Comment::__set
-   * @covers BugHerd_Comment::__get
+   * BugHerd_Comment::setId
+   * BugHerd_Comment::getId
    */
   public function testSetId() {
     $comment = new BugHerd_Comment();
@@ -25,10 +23,8 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::getText
-   * @covers BugHerd_Comment::setText
-   * @covers BugHerd_Comment::__set
-   * @covers BugHerd_Comment::__get
+   * BugHerd_Comment::getText
+   * BugHerd_Comment::setText
    */
   public function testSetText() {
     $comment = new BugHerd_Comment();
@@ -38,10 +34,8 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::getUserId
-   * @covers BugHerd_Comment::setUserId
-   * @covers BugHerd_Comment::__set
-   * @covers BugHerd_Comment::__get
+   * BugHerd_Comment::getUserId
+   * BugHerd_Comment::setUserId
    */
   public function testSetUserId() {
     $comment = new BugHerd_Comment();
@@ -51,10 +45,8 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::getCreated
-   * @covers BugHerd_Comment::setCreated
-   * @covers BugHerd_Comment::__set
-   * @covers BugHerd_Comment::__get
+   * BugHerd_Comment::getCreated
+   * BugHerd_Comment::setCreated
    */
   public function testSetCreated() {
     $comment = new BugHerd_Comment();
@@ -65,7 +57,7 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::setCreated
+   * BugHerd_Comment::setCreated
    */
   public function testBadCreationDate(){
     $comment = new BugHerd_Comment();
@@ -76,10 +68,8 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::getUpdated
-   * @covers BugHerd_Comment::setUpdated
-   * @covers BugHerd_Comment::__set
-   * @covers BugHerd_Comment::__get
+   * BugHerd_Comment::getUpdated
+   * BugHerd_Comment::setUpdated
    */
   public function testSetUpdated() {
     $comment = new BugHerd_Comment();
@@ -90,7 +80,7 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::setUpdated
+   * BugHerd_Comment::setUpdated
    */
   public function testBadUpdatedDate(){
     $comment = new BugHerd_Comment();
@@ -101,7 +91,7 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::__set
+   * BugHerd_Comment::__set
    * @expectedException InvalidArgumentException
    */
   public function testBadPropertySet(){
@@ -110,7 +100,7 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::__get
+   * BugHerd_Comment::__get
    * @expectedException InvalidArgumentException
    */
   public function testBadPropertyGet(){
@@ -119,9 +109,7 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::toXml
-   * @covers BugHerd_Comment::__set
-   * @covers BugHerd_Comment::__get
+   * BugHerd_Comment::toXml
    */
   public function testToXml() {
     $xml = simplexml_load_string('<comment></comment>');
@@ -133,8 +121,7 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::fromXml
-   * @covers BugHerd_Comment::__get
+   * BugHerd_Comment::fromXml
    */
   public function testFromXml() {
     $xml = simplexml_load_string('<comment></comment>');
@@ -153,7 +140,7 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Comment::fromXml
+   * BugHerd_Comment::fromXml
    * @expectedException InvalidArgumentException
    */
   public function testInvalidXml(){

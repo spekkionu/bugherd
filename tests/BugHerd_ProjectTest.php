@@ -12,9 +12,9 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
 
 
   /**
-   * @covers BugHerd_Project::setId
-   * @covers BugHerd_Project::getId
-   * @covers BugHerd_Project::__set
+   * BugHerd_Project::setId
+   * BugHerd_Project::getId
+   * BugHerd_Project::__set
    */
   public function testSetId() {
     $project = new BugHerd_Project();
@@ -24,9 +24,9 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::getName
-   * @covers BugHerd_Project::setName
-   * @covers BugHerd_Project::__set
+   * BugHerd_Project::getName
+   * BugHerd_Project::setName
+   * BugHerd_Project::__set
    */
   public function testSetName() {
     $project = new BugHerd_Project();
@@ -36,9 +36,9 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::getDevUrl
-   * @covers BugHerd_Project::setDevUrl
-   * @covers BugHerd_Project::__set
+   * BugHerd_Project::getDevUrl
+   * BugHerd_Project::setDevUrl
+   * BugHerd_Project::__set
    */
   public function testSetDevUrl() {
     $project = new BugHerd_Project();
@@ -48,9 +48,9 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::getActive
-   * @covers BugHerd_Project::setActive
-   * @covers BugHerd_Project::__set
+   * BugHerd_Project::getActive
+   * BugHerd_Project::setActive
+   * BugHerd_Project::__set
    */
   public function testSetActive() {
     $project = new BugHerd_Project();
@@ -60,9 +60,9 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::getCreated
-   * @covers BugHerd_Project::setCreated
-   * @covers BugHerd_Project::__set
+   * BugHerd_Project::getCreated
+   * BugHerd_Project::setCreated
+   * BugHerd_Project::__set
    */
   public function testSetCreated() {
     $project = new BugHerd_Project();
@@ -73,9 +73,9 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::getUpdated
-   * @covers BugHerd_Project::setUpdated
-   * @covers BugHerd_Project::__set
+   * BugHerd_Project::getUpdated
+   * BugHerd_Project::setUpdated
+   * BugHerd_Project::__set
    */
   public function testSetUpdated() {
     $project = new BugHerd_Project();
@@ -86,7 +86,7 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::toXml
+   * BugHerd_Project::toXml
    */
   public function testToXml() {
     $xml = simplexml_load_string('<project></project>');
@@ -100,8 +100,9 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::fromXml
-   * @covers BugHerd_Project::__get
+   * BugHerd_Project::fromXml
+   * BugHerd_Project::__get
+   * BugHerd_Project::setActive
    */
   public function testFromXml() {
     $xml = simplexml_load_string('<project></project>');
@@ -122,7 +123,7 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::__set
+   * BugHerd_Project::__set
    * @expectedException InvalidArgumentException
    */
   public function testBadPropertySet(){
@@ -131,7 +132,7 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::__get
+   * BugHerd_Project::__get
    * @expectedException InvalidArgumentException
    */
   public function testBadPropertyGet(){
@@ -141,7 +142,7 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
 
 
   /**
-   * @covers BugHerd_Project::fromXml
+   * BugHerd_Project::fromXml
    * @expectedException InvalidArgumentException
    */
   public function testInvalidXml(){
@@ -150,7 +151,7 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::setUpdated
+   * BugHerd_Project::setUpdated
    */
   public function testBadUpdatedDate(){
     $comment = new BugHerd_Project();
@@ -161,7 +162,7 @@ class BugHerd_ProjectTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Project::setCreated
+   * BugHerd_Project::setCreated
    */
   public function testBadCreationDate(){
     $comment = new BugHerd_Project();

@@ -510,15 +510,9 @@ class BugHerd_Task
     }
     if ($this->getWindowScreenshot()) {
       $screenshot = $xml->addChild('window-screenshot')->addChild('url', $this->getWindowScreenshot());
-      if (!$this->getWindowScreenshot()) {
-        $screenshot->addAttribute('nil', 'true');
-      }
     }
     if ($this->getTargetScreenshot()) {
       $screenshot = $xml->addChild('target-screenshot')->addChild('url', $this->getTargetScreenshot());
-      if (!$this->getTargetScreenshot()) {
-        $screenshot->addAttribute('nil', 'true');
-      }
     }
     return $xml->asXML();
   }

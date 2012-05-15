@@ -38,7 +38,9 @@ class BugHerd_Api
    */
   public function __construct($email, $password) {
     if (!extension_loaded('simplexml')) {
+      // @codeCoverageIgnoreStart
       throw new BugHerd_Exception("SimpleXML extension is missing.", BugHerd_Exception::CODE_NO_SIMPLEXML);
+      // @codeCoverageIgnoreEnd
     }
     $this->setAccountCredentials($email, $password);
   }
@@ -275,7 +277,9 @@ class BugHerd_Api
    */
   protected function _sendRequest($url, $method = "GET", $xml = null) {
     if (!extension_loaded('curl')) {
+      // @codeCoverageIgnoreStart
       throw new BugHerd_Exception("cURL extension is missing.", BugHerd_Exception::CODE_NO_CURL);
+      // @codeCoverageIgnoreEnd
     }
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);

@@ -12,10 +12,10 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
 
 
   /**
-   * @covers BugHerd_User::setId
-   * @covers BugHerd_User::getId
-   * @covers BugHerd_User::__get
-   * @covers BugHerd_User::__set
+   * BugHerd_User::setId
+   * BugHerd_User::getId
+   * BugHerd_User::__get
+   * BugHerd_User::__set
    */
   public function testSetId() {
     $user = new BugHerd_User();
@@ -25,10 +25,10 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::getName
-   * @covers BugHerd_User::setName
-   * @covers BugHerd_User::__get
-   * @covers BugHerd_User::__set
+   * BugHerd_User::getName
+   * BugHerd_User::setName
+   * BugHerd_User::__get
+   * BugHerd_User::__set
    */
   public function testSetName() {
     $user = new BugHerd_User();
@@ -38,10 +38,10 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::getSurName
-   * @covers BugHerd_User::setSurName
-   * @covers BugHerd_User::__get
-   * @covers BugHerd_User::__set
+   * BugHerd_User::getSurName
+   * BugHerd_User::setSurName
+   * BugHerd_User::__get
+   * BugHerd_User::__set
    */
   public function testSetSurName() {
     $user = new BugHerd_User();
@@ -51,10 +51,10 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::getEmail
-   * @covers BugHerd_User::setEmail
-   * @covers BugHerd_User::__get
-   * @covers BugHerd_User::__set
+   * BugHerd_User::getEmail
+   * BugHerd_User::setEmail
+   * BugHerd_User::__get
+   * BugHerd_User::__set
    */
   public function testSetEmail() {
     $user = new BugHerd_User();
@@ -64,10 +64,10 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::getCreated
-   * @covers BugHerd_User::setCreated
-   * @covers BugHerd_User::__get
-   * @covers BugHerd_User::__set
+   * BugHerd_User::getCreated
+   * BugHerd_User::setCreated
+   * BugHerd_User::__get
+   * BugHerd_User::__set
    */
   public function testSetCreated() {
     $user = new BugHerd_User();
@@ -78,10 +78,10 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::getUpdated
-   * @covers BugHerd_User::setUpdated
-   * @covers BugHerd_User::__get
-   * @covers BugHerd_User::__set
+   * BugHerd_User::getUpdated
+   * BugHerd_User::setUpdated
+   * BugHerd_User::__get
+   * BugHerd_User::__set
    */
   public function testSetUpdated() {
     $user = new BugHerd_User();
@@ -92,7 +92,7 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::toXml
+   * BugHerd_User::toXml
    */
   public function testToXml() {
     $xml = simplexml_load_string('<user></user>');
@@ -108,8 +108,8 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::fromXml
-   * @covers BugHerd_User::__get
+   * BugHerd_User::fromXml
+   * BugHerd_User::__get
    */
   public function testFromXml() {
     $xml = simplexml_load_string('<user></user>');
@@ -130,7 +130,7 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::__set
+   * BugHerd_User::__set
    * @expectedException InvalidArgumentException
    */
   public function testBadPropertySet(){
@@ -139,7 +139,7 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::__get
+   * BugHerd_User::__get
    * @expectedException InvalidArgumentException
    */
   public function testBadPropertyGet(){
@@ -149,7 +149,7 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
 
 
   /**
-   * @covers BugHerd_User::fromXml
+   * BugHerd_User::fromXml
    * @expectedException InvalidArgumentException
    */
   public function testInvalidXml(){
@@ -158,7 +158,7 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::setUpdated
+   * BugHerd_User::setUpdated
    */
   public function testBadUpdatedDate(){
     $comment = new BugHerd_User();
@@ -169,7 +169,7 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::setCreated
+   * BugHerd_User::setCreated
    */
   public function testBadCreationDate(){
     $comment = new BugHerd_User();
