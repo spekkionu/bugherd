@@ -138,7 +138,7 @@ class BugHerd_Api
    * When you set the status to inactive, the project will no longer count towards your plan limit (the sidebar will be disabled, but data is kept).
    *
    * @param int $project_id ID of project
-   * @param array $project
+   * @param BugHerd_Project $project Project data
    * @return boolean True if successful
    */
   public function updateProject($project_id, BugHerd_Project $project) {

@@ -166,7 +166,7 @@ class BugHerd_Task
 
   /**
    * Sets local id
-   * @param int $id The local id
+   * @param int $local_id The local id
    * @return BugHerd_Task
    */
   public function setLocalId($local_id) {
@@ -184,7 +184,7 @@ class BugHerd_Task
 
   /**
    * Sets assigned to user id
-   * @param int $id The user id
+   * @param int $user_id The user id
    * @return BugHerd_Task
    */
   public function setAssignedTo($user_id) {
@@ -202,7 +202,7 @@ class BugHerd_Task
 
   /**
    * Sets task description
-   * @param string $name User first name
+   * @param string $description Task description
    * @return BugHerd_Task
    */
   public function setDescription($description) {
@@ -220,7 +220,7 @@ class BugHerd_Task
 
   /**
    * Sets task priority
-   * @param int $id The task priority id
+   * @param int $priority The task priority id
    * @return BugHerd_Task
    */
   public function setPriority($priority) {
@@ -241,7 +241,7 @@ class BugHerd_Task
 
   /**
    * Sets task status
-   * @param int $id The task status id
+   * @param int $status The task status id
    * @return BugHerd_Task
    */
   public function setStatus($status) {
@@ -262,7 +262,7 @@ class BugHerd_Task
 
   /**
    * Sets task url
-   * @param string $name Task url
+   * @param string $url Task url
    * @return BugHerd_Task
    */
   public function setUrl($url) {

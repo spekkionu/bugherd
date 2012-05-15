@@ -92,7 +92,7 @@ class BugHerd_Comment
 
   /**
    * Sets User id
-   * @param string $name User id
+   * @param id $user_id User id
    * @return BugHerd_Comment
    */
   public function setUserId($user_id) {
