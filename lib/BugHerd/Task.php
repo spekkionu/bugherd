@@ -539,24 +539,28 @@ class BugHerd_Task
     $task->setId($xml->id);
     $task->setDescription($xml->description);
     $task->setUrl($xml->url);
-    $task->setLocalId($xml['local-task-id']);
-    $task->setPriority($xml['priority-id']);
-    $task->setStatus($xml['status-id']);
-    $task->setAssignedTo($xml['assigned-to-id']);
-    if (property_exists($task, 'window-screenshot')) {
-      $property = 'window-screenshot';
+    $property = 'local-task-id';
+    $task->setLocalId($xml->$property);
+    $property = 'priority-id';
+    $task->setPriority($xml->$property);
+    $property = 'status-id';
+    $task->setStatus($xml->$property);
+    $property = 'assigned-to-id';
+    $task->setAssignedTo($xml->$property);
+    $property = 'window-screenshot';
+    if (property_exists($xml, 'window-screenshot')) {
       $task->setWindowScreenshot($xml->$property->url);
     }
-    if (property_exists($task, 'target-screenshot')) {
-      $property = 'target-screenshot';
+    $property = 'target-screenshot';
+    if (property_exists($xml, 'target-screenshot')) {
       $task->setTargetScreenshot($xml->$property->url);
     }
-    if (property_exists($task, 'created-at')) {
-      $property = 'created-at';
+    $property = 'created-at';
+    if (property_exists($xml, 'created-at')) {
       $task->setCreated($xml->$property);
     }
-    if (property_exists($task, 'updated-at')) {
-      $property = 'updated-at';
+    $property = 'updated-at';
+    if (property_exists($xml, 'updated-at')) {
       $task->setUpdated($xml->$property);
     }
     return $task;
