@@ -24,7 +24,10 @@ Usage
     $projects = $api->listProjects();
     ```
     
-5. A list of available methods can be found at http://www.bugherd.com/api
+A list of available api methods can be found at http://www.bugherd.com/api
+
+Full usage documentation can be found at https://github.com/spekkionu/bugherd/wiki/Usage
+
 
 
 Installation
