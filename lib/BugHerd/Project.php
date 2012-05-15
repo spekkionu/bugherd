@@ -264,7 +264,7 @@ class BugHerd_Project
   public function toXml() {
     $xml = new SimpleXMLElement('<project></project>');
     $xml->addChild('name', $this->getName());
-    $xml->addChild('devurl', $this->getName());
+    $xml->addChild('devurl', $this->getDevUrl());
     return $xml->asXML();
   }
 
