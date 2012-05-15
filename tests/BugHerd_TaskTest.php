@@ -12,130 +12,141 @@ class BugHerd_TaskTest extends PHPUnit_Framework_TestCase
 
 
   /**
-   * @covers BugHerd_Task::setId()
-   * @covers BugHerd_Task::getId()
+   * @covers BugHerd_Task::setId
+   * @covers BugHerd_Task::getId
+   * @covers BugHerd_Task::__set
    */
   public function testSetId() {
     $task = new BugHerd_Task();
-    $task->setId(5123);
-    $id = $task->getId();
+    $task->id = 5123;
+    $id = $task->id;
     $this->assertEquals(5123, $id);
   }
 
   /**
-   * @covers BugHerd_Task::setLocalId()
-   * @covers BugHerd_Task::getLocalId()
+   * @covers BugHerd_Task::setLocalId
+   * @covers BugHerd_Task::getLocalId
+   * @covers BugHerd_Task::__set
    */
   public function testSetLocalId() {
     $task = new BugHerd_Task();
-    $task->setLocalId(5123);
+    $task->local_id = 5123;
     $id = $task->getLocalId();
     $this->assertEquals(5123, $id);
   }
 
   /**
-   * @covers BugHerd_Task::getDescription()
-   * @covers BugHerd_Task::setDescription()
+   * @covers BugHerd_Task::getDescription
+   * @covers BugHerd_Task::setDescription
+   * @covers BugHerd_Task::__set
    */
   public function testSetDescription() {
     $task = new BugHerd_Task();
-    $task->setDescription('description');
+    $task->description = 'description';
     $value = $task->getDescription();
     $this->assertEquals('description', $value);
   }
 
   /**
-   * @covers BugHerd_Task::getUrl()
-   * @covers BugHerd_Task::setUrl()
+   * @covers BugHerd_Task::getUrl
+   * @covers BugHerd_Task::setUrl
+   * @covers BugHerd_Task::__set
    */
   public function testSetUrl() {
     $task = new BugHerd_Task();
-    $task->setUrl('http://www.task-url.com');
+    $task->url = 'http://www.task-url.com';
     $value = $task->getUrl();
     $this->assertEquals('http://www.task-url.com', $value);
   }
 
   /**
-   * @covers BugHerd_Task::getWindowScreenshot()
-   * @covers BugHerd_Task::setWindowScreenshot()
+   * @covers BugHerd_Task::getWindowScreenshot
+   * @covers BugHerd_Task::setWindowScreenshot
+   * @covers BugHerd_Task::__set
    */
   public function testSetWindowScreenshot() {
     $task = new BugHerd_Task();
-    $task->setWindowScreenshot('http://www.example.com/window.png');
+    $task->screenshot_window = 'http://www.example.com/window.png';
     $value = $task->getWindowScreenshot();
     $this->assertEquals('http://www.example.com/window.png', $value);
   }
 
   /**
-   * @covers BugHerd_Task::getTargetScreenshot()
-   * @covers BugHerd_Task::setTargetScreenshot()
+   * @covers BugHerd_Task::getTargetScreenshot
+   * @covers BugHerd_Task::setTargetScreenshot
+   * @covers BugHerd_Task::__set
    */
   public function testSetTargetScreenshot() {
     $task = new BugHerd_Task();
-    $task->setTargetScreenshot('http://www.example.com/target.png');
+    $task->screenshot_target = 'http://www.example.com/target.png';
     $value = $task->getTargetScreenshot();
     $this->assertEquals('http://www.example.com/target.png', $value);
   }
 
   /**
-   * @covers BugHerd_Task::getAssignedTo()
-   * @covers BugHerd_Task::setAssignedTo()
+   * @covers BugHerd_Task::getAssignedTo
+   * @covers BugHerd_Task::setAssignedTo
+   * @covers BugHerd_Task::__set
    */
   public function testSetAssignedTo() {
     $task = new BugHerd_Task();
-    $task->setAssignedTo(51);
+    $task->assigned_to = 51;
     $value = $task->getAssignedTo();
     $this->assertEquals(51, $value);
   }
 
   /**
-   * @covers BugHerd_Task::getPriority()
-   * @covers BugHerd_Task::setPriority()
+   * @covers BugHerd_Task::getPriority
+   * @covers BugHerd_Task::setPriority
+   * @covers BugHerd_Task::__set
    */
   public function testSetPriority() {
     $task = new BugHerd_Task();
-    $task->setPriority(BugHerd_Task::PRIORITY_IMPORTANT);
+    $task->priority_id = BugHerd_Task::PRIORITY_IMPORTANT;
     $value = $task->getPriority();
     $this->assertEquals(BugHerd_Task::PRIORITY_IMPORTANT, $value);
   }
 
   /**
-   * @covers BugHerd_Task::getStatus()
-   * @covers BugHerd_Task::setStatus()
+   * @covers BugHerd_Task::getStatus
+   * @covers BugHerd_Task::setStatus
+   * @covers BugHerd_Task::__set
    */
   public function testSetStatus() {
     $task = new BugHerd_Task();
-    $task->setStatus(BugHerd_Task::STATUS_DOING);
+    $task->status_id = BugHerd_Task::STATUS_DOING;
     $value = $task->getStatus();
     $this->assertEquals(BugHerd_Task::STATUS_DOING, $value);
   }
 
   /**
-   * @covers BugHerd_Task::getCreated()
-   * @covers BugHerd_Task::setCreated()
+   * @covers BugHerd_Task::getCreated
+   * @covers BugHerd_Task::setCreated
+   * @covers BugHerd_Task::__set
    */
   public function testSetCreated() {
     $task = new BugHerd_Task();
-    $date = new DateTime();
-    $task->setCreated($date);
+    $date = date('c');
+    $task->created = $date;
     $value = $task->getCreated();
-    $this->assertEquals($date, $value);
+    $this->assertInstanceOf('DateTime', $value);
   }
 
   /**
-   * @covers BugHerd_Task::getUpdated()
-   * @covers BugHerd_Task::setUpdated()
+   * @covers BugHerd_Task::getUpdated
+   * @covers BugHerd_Task::setUpdated
+   * @covers BugHerd_Task::__set
    */
   public function testSetUpdated() {
     $task = new BugHerd_Task();
-    $date = new DateTime();
-    $task->setUpdated($date);
+    $date = date('c');
+    $task->updated = $date;
     $value = $task->getUpdated();
-    $this->assertEquals($date, $value);
+    $this->assertInstanceOf('DateTime', $value);
   }
 
   /**
-   * @covers BugHerd_Task::toXml()
+   * @covers BugHerd_Task::toXml
    */
   public function testToXml() {
     $xml = simplexml_load_string('<task></task>');
@@ -161,7 +172,8 @@ class BugHerd_TaskTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_Task::fromXml()
+   * @covers BugHerd_Task::fromXml
+   * @covers BugHerd_Task::__get
    */
   public function testFromXml() {
     $xml = simplexml_load_string('<task></task>');
@@ -174,6 +186,8 @@ class BugHerd_TaskTest extends PHPUnit_Framework_TestCase
     $xml->addChild('status-id', BugHerd_Task::STATUS_DOING);
     $xml->addChild('window-screenshot')->addChild('url', 'http://url.com/window.png');
     $xml->addChild('target-screenshot')->addChild('url', 'http://url.com/target.png');
+    $xml->addChild('created-at', date('c'));
+    $xml->addChild('updated-at', date('c'));
     $xml = $xml->asXML();
     $task = BugHerd_Task::fromXml($xml);
     $this->assertEquals(1234, $task->id);
@@ -185,6 +199,58 @@ class BugHerd_TaskTest extends PHPUnit_Framework_TestCase
     $this->assertEquals('http://url.com/window.png', $task->screenshot_window);
     $this->assertEquals('http://url.com/target.png', $task->screenshot_target);
     $this->assertEquals('http://url.com', $task->url);
+    $this->assertInstanceOf('DateTime', $task->created);
+    $this->assertInstanceOf('DateTime', $task->updated);
+  }
+
+  /**
+   * @covers BugHerd_Task::__set
+   * @expectedException InvalidArgumentException
+   */
+  public function testBadPropertySet(){
+    $comment = new BugHerd_Task();
+    $comment->bad_property = 'value';
+  }
+
+  /**
+   * @covers BugHerd_Task::__get
+   * @expectedException InvalidArgumentException
+   */
+  public function testBadPropertyGet(){
+    $comment = new BugHerd_Task();
+    $value = $comment->bad_property;
+  }
+
+
+  /**
+   * @covers BugHerd_Task::fromXml
+   * @expectedException InvalidArgumentException
+   */
+  public function testInvalidXml(){
+    $xml = 'this is not valid xml';
+    $user = BugHerd_Task::fromXml($xml);
+  }
+
+  /**
+   * @covers BugHerd_Task::setUpdated
+   */
+  public function testBadUpdatedDate(){
+    $comment = new BugHerd_Task();
+    $date = 'bad date';
+    $comment->updated = $date;
+    $value = $comment->updated;
+    $this->assertNull($value);
+  }
+
+  /**
+   * @covers BugHerd_Task::setCreated
+   */
+  public function testBadCreationDate(){
+    $comment = new BugHerd_Task();
+    $date = 'bad date';
+    $comment->created = $date;
+    $value = $comment->created;
+    $this->assertNull($value);
   }
 }
 

@@ -12,87 +12,153 @@ class BugHerd_CommentTest extends PHPUnit_Framework_TestCase
 
 
   /**
-   * @covers BugHerd_Comment::setId()
-   * @covers BugHerd_Comment::getId()
+   * @covers BugHerd_Comment::setId
+   * @covers BugHerd_Comment::getId
+   * @covers BugHerd_Comment::__set
+   * @covers BugHerd_Comment::__get
    */
   public function testSetId() {
     $comment = new BugHerd_Comment();
-    $comment->setId(5123);
-    $id = $comment->getId();
+    $comment->id = 5123;
+    $id = $comment->id;
     $this->assertEquals(5123, $id);
   }
 
   /**
-   * @covers BugHerd_Comment::getText()
-   * @covers BugHerd_Comment::setText()
+   * @covers BugHerd_Comment::getText
+   * @covers BugHerd_Comment::setText
+   * @covers BugHerd_Comment::__set
+   * @covers BugHerd_Comment::__get
    */
   public function testSetText() {
     $comment = new BugHerd_Comment();
-    $comment->setText('text');
-    $value = $comment->getText();
+    $comment->text = 'text';
+    $value = $comment->text;
     $this->assertEquals('text', $value);
   }
 
   /**
-   * @covers BugHerd_Comment::getUserId()
-   * @covers BugHerd_Comment::setUserId()
+   * @covers BugHerd_Comment::getUserId
+   * @covers BugHerd_Comment::setUserId
+   * @covers BugHerd_Comment::__set
+   * @covers BugHerd_Comment::__get
    */
   public function testSetUserId() {
     $comment = new BugHerd_Comment();
-    $comment->setUserId(5);
-    $value = $comment->getUserId();
+    $comment->user_id = 5;
+    $value = $comment->user_id;
     $this->assertEquals(5, $value);
   }
 
   /**
-   * @covers BugHerd_Comment::getCreated()
-   * @covers BugHerd_Comment::setCreated()
+   * @covers BugHerd_Comment::getCreated
+   * @covers BugHerd_Comment::setCreated
+   * @covers BugHerd_Comment::__set
+   * @covers BugHerd_Comment::__get
    */
   public function testSetCreated() {
     $comment = new BugHerd_Comment();
-    $date = new DateTime();
-    $comment->setCreated($date);
-    $value = $comment->getCreated();
-    $this->assertEquals($date, $value);
+    $date = date('c');
+    $comment->created = $date;
+    $value = $comment->created;
+    $this->assertInstanceOf('DateTime', $value);
   }
 
   /**
-   * @covers BugHerd_Comment::getUpdated()
-   * @covers BugHerd_Comment::setUpdated()
+   * @covers BugHerd_Comment::setCreated
+   */
+  public function testBadCreationDate(){
+    $comment = new BugHerd_Comment();
+    $date = 'bad date';
+    $comment->created = $date;
+    $value = $comment->created;
+    $this->assertNull($value);
+  }
+
+  /**
+   * @covers BugHerd_Comment::getUpdated
+   * @covers BugHerd_Comment::setUpdated
+   * @covers BugHerd_Comment::__set
+   * @covers BugHerd_Comment::__get
    */
   public function testSetUpdated() {
     $comment = new BugHerd_Comment();
-    $date = new DateTime();
-    $comment->setUpdated($date);
-    $value = $comment->getUpdated();
-    $this->assertEquals($date, $value);
+    $date = date('c');
+    $comment->updated = $date;
+    $value = $comment->updated;
+    $this->assertInstanceOf('DateTime', $value);
   }
 
   /**
-   * @covers BugHerd_Comment::toXml()
+   * @covers BugHerd_Comment::setUpdated
+   */
+  public function testBadUpdatedDate(){
+    $comment = new BugHerd_Comment();
+    $date = 'bad date';
+    $comment->updated = $date;
+    $value = $comment->updated;
+    $this->assertNull($value);
+  }
+
+  /**
+   * @covers BugHerd_Comment::__set
+   * @expectedException InvalidArgumentException
+   */
+  public function testBadPropertySet(){
+    $comment = new BugHerd_Comment();
+    $comment->bad_property = 'value';
+  }
+
+  /**
+   * @covers BugHerd_Comment::__get
+   * @expectedException InvalidArgumentException
+   */
+  public function testBadPropertyGet(){
+    $comment = new BugHerd_Comment();
+    $value = $comment->bad_property;
+  }
+
+  /**
+   * @covers BugHerd_Comment::toXml
+   * @covers BugHerd_Comment::__set
+   * @covers BugHerd_Comment::__get
    */
   public function testToXml() {
     $xml = simplexml_load_string('<comment></comment>');
     $xml->addChild('text', 'text');
     $comment = new BugHerd_Comment();
-    $comment->setText('text');
+    $comment->text = 'text';
     $comment_xml = $comment->toXml();
     $this->assertXmlStringEqualsXmlString($xml->asXML(), $comment_xml);
   }
 
   /**
-   * @covers BugHerd_Comment::fromXml()
+   * @covers BugHerd_Comment::fromXml
+   * @covers BugHerd_Comment::__get
    */
   public function testFromXml() {
     $xml = simplexml_load_string('<comment></comment>');
     $xml->addChild('id', 1234);
     $xml->addChild('text', 'text');
     $xml->addChild('user-id', 5);
+    $xml->addChild('created-at', date('c'));
+    $xml->addChild('updated-at', date('c'));
     $xml = $xml->asXML();
     $comment = BugHerd_Comment::fromXml($xml);
     $this->assertEquals(1234, $comment->id);
     $this->assertEquals(5, $comment->user_id);
     $this->assertEquals('text', $comment->text);
+    $this->assertInstanceOf('DateTime', $comment->created);
+    $this->assertInstanceOf('DateTime', $comment->updated);
+  }
+
+  /**
+   * @covers BugHerd_Comment::fromXml
+   * @expectedException InvalidArgumentException
+   */
+  public function testInvalidXml(){
+    $xml = 'this is not valid xml';
+    $comment = BugHerd_Comment::fromXml($xml);
   }
 }
 

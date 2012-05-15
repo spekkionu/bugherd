@@ -152,7 +152,7 @@ class BugHerd_Comment
    * Magic getter
    * @param string $name
    * @return mixed
-   * @throws Exception
+   * @throws InvalidArgumentException
    */
   public function __get($name) {
     switch ($name) {
@@ -179,7 +179,7 @@ class BugHerd_Comment
         return $this->getUpdated();
         break;
       default:
-        throw new Exception("Invalid property {$name}");
+        throw new InvalidArgumentException("Invalid property {$name}");
         break;
     }
   }
@@ -188,7 +188,7 @@ class BugHerd_Comment
    * Magic setter
    * @param string $name
    * @param mixed $value
-   * @throws Exception
+   * @throws InvalidArgumentException
    */
   public function __set($name, $value) {
     switch ($name) {
@@ -215,7 +215,7 @@ class BugHerd_Comment
         $this->setUpdated($value);
         break;
       default:
-        throw new Exception("Invalid property {$name}");
+        throw new InvalidArgumentException("Invalid property {$name}");
         break;
     }
   }
@@ -234,13 +234,14 @@ class BugHerd_Comment
    * Creates from xml
    * @param string|SimpleXMLElement $xml Xml string or SimpleXMLElement object
    * @return BugHerd_Comment
+   * @throws InvalidArgumentException
    */
   public static function fromXml($xml) {
     $comment = new BugHerd_Comment();
     if (!($xml instanceof SimpleXMLElement)) {
       $xml = @simplexml_load_string($xml);
       if ($xml === false) {
-        throw new Exception("Invalid XML");
+        throw new InvalidArgumentException("Invalid XML");
       }
     }
     $comment->setId($xml->id);

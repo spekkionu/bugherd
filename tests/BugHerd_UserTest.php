@@ -12,75 +12,87 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
 
 
   /**
-   * @covers BugHerd_User::setId()
-   * @covers BugHerd_User::getId()
+   * @covers BugHerd_User::setId
+   * @covers BugHerd_User::getId
+   * @covers BugHerd_User::__get
+   * @covers BugHerd_User::__set
    */
   public function testSetId() {
     $user = new BugHerd_User();
-    $user->setId(5123);
-    $id = $user->getId();
+    $user->id = 5123;
+    $id = $user->id;
     $this->assertEquals(5123, $id);
   }
 
   /**
-   * @covers BugHerd_User::getName()
-   * @covers BugHerd_User::setName()
+   * @covers BugHerd_User::getName
+   * @covers BugHerd_User::setName
+   * @covers BugHerd_User::__get
+   * @covers BugHerd_User::__set
    */
   public function testSetName() {
     $user = new BugHerd_User();
-    $user->setName('name');
-    $value = $user->getName();
+    $user->name = 'name';
+    $value = $user->name;
     $this->assertEquals('name', $value);
   }
 
   /**
-   * @covers BugHerd_User::getSurName()
-   * @covers BugHerd_User::setSurName()
+   * @covers BugHerd_User::getSurName
+   * @covers BugHerd_User::setSurName
+   * @covers BugHerd_User::__get
+   * @covers BugHerd_User::__set
    */
   public function testSetSurName() {
     $user = new BugHerd_User();
-    $user->setSurName('lastname');
-    $value = $user->getSurName();
+    $user->surname = 'lastname';
+    $value = $user->surname;
     $this->assertEquals('lastname', $value);
   }
 
   /**
-   * @covers BugHerd_User::getEmail()
-   * @covers BugHerd_User::setEmail()
+   * @covers BugHerd_User::getEmail
+   * @covers BugHerd_User::setEmail
+   * @covers BugHerd_User::__get
+   * @covers BugHerd_User::__set
    */
   public function testSetEmail() {
     $user = new BugHerd_User();
-    $user->setEmail('email@example.com');
-    $value = $user->getEmail();
+    $user->email = 'email@example.com';
+    $value = $user->email;
     $this->assertEquals('email@example.com', $value);
   }
 
   /**
-   * @covers BugHerd_User::getCreated()
-   * @covers BugHerd_User::setCreated()
+   * @covers BugHerd_User::getCreated
+   * @covers BugHerd_User::setCreated
+   * @covers BugHerd_User::__get
+   * @covers BugHerd_User::__set
    */
   public function testSetCreated() {
     $user = new BugHerd_User();
-    $date = new DateTime();
-    $user->setCreated($date);
-    $value = $user->getCreated();
-    $this->assertEquals($date, $value);
+    $date =date('c');
+    $user->created = $date;
+    $value = $user->created;
+    $this->assertInstanceOf('DateTime', $value);
   }
 
   /**
-   * @covers BugHerd_User::getUpdated()
-   * @covers BugHerd_User::setUpdated()
+   * @covers BugHerd_User::getUpdated
+   * @covers BugHerd_User::setUpdated
+   * @covers BugHerd_User::__get
+   * @covers BugHerd_User::__set
    */
   public function testSetUpdated() {
     $user = new BugHerd_User();
-    $date = new DateTime();
-    $user->setUpdated($date);
-    $value = $user->getUpdated();
-    $this->assertEquals($date, $value);
+    $date = date('c');
+    $user->updated = $date;
+    $value = $user->updated;
+    $this->assertInstanceOf('DateTime', $value);
   }
 
   /**
-   * @covers BugHerd_User::toXml()
+   * @covers BugHerd_User::toXml
    */
   public function testToXml() {
     $xml = simplexml_load_string('<user></user>');
@@ -96,7 +108,8 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @covers BugHerd_User::fromXml()
+   * @covers BugHerd_User::fromXml
+   * @covers BugHerd_User::__get
    */
   public function testFromXml() {
     $xml = simplexml_load_string('<user></user>');
@@ -104,12 +117,67 @@ class BugHerd_UserTest extends PHPUnit_Framework_TestCase
     $xml->addChild('name', 'name');
     $xml->addChild('surname', 'surname');
     $xml->addChild('email', 'email@example.com');
+    $xml->addChild('created-at', date('c'));
+    $xml->addChild('updated-at', date('c'));
     $xml = $xml->asXML();
     $user = BugHerd_User::fromXml($xml);
     $this->assertEquals(1234, $user->id);
     $this->assertEquals('name', $user->name);
     $this->assertEquals('surname', $user->surname);
     $this->assertEquals('email@example.com', $user->email);
+    $this->assertInstanceOf('DateTime', $user->created);
+    $this->assertInstanceOf('DateTime', $user->updated);
   }
+
+  /**
+   * @covers BugHerd_User::__set
+   * @expectedException InvalidArgumentException
+   */
+  public function testBadPropertySet(){
+    $comment = new BugHerd_User();
+    $comment->bad_property = 'value';
+  }
+
+  /**
+   * @covers BugHerd_User::__get
+   * @expectedException InvalidArgumentException
+   */
+  public function testBadPropertyGet(){
+    $comment = new BugHerd_User();
+    $value = $comment->bad_property;
+  }
+
+
+  /**
+   * @covers BugHerd_User::fromXml
+   * @expectedException InvalidArgumentException
+   */
+  public function testInvalidXml(){
+    $xml = 'this is not valid xml';
+    $user = BugHerd_User::fromXml($xml);
+  }
+
+  /**
+   * @covers BugHerd_User::setUpdated
+   */
+  public function testBadUpdatedDate(){
+    $comment = new BugHerd_User();
+    $date = 'bad date';
+    $comment->updated = $date;
+    $value = $comment->updated;
+    $this->assertNull($value);
+  }
+
+  /**
+   * @covers BugHerd_User::setCreated
+   */
+  public function testBadCreationDate(){
+    $comment = new BugHerd_User();
+    $date = 'bad date';
+    $comment->created = $date;
+    $value = $comment->created;
+    $this->assertNull($value);
+  }
+
 }
 

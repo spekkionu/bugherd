@@ -416,7 +416,7 @@ class BugHerd_Task
         return $this->getUpdated();
         break;
       default:
-        throw new Exception("Invalid property {$name}");
+        throw new InvalidArgumentException("Invalid property {$name}");
         break;
     }
   }
@@ -483,7 +483,7 @@ class BugHerd_Task
         $this->setUpdated($value);
         break;
       default:
-        throw new Exception("Invalid property {$name}");
+        throw new InvalidArgumentException("Invalid property {$name}");
         break;
     }
   }
@@ -533,7 +533,7 @@ class BugHerd_Task
     if (!($xml instanceof SimpleXMLElement)) {
       $xml = @simplexml_load_string($xml);
       if ($xml === false) {
-        throw new Exception("Invalid XML");
+        throw new InvalidArgumentException("Invalid XML");
       }
     }
     $task->setId($xml->id);

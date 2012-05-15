@@ -44,6 +44,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::getAccountCredentials
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testGetAccountCredentials() {
     $api = new BugHerd_Api('email@address.com', 'password');
@@ -53,6 +54,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::setAccountCredentials
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testSetAccountCredentials() {
     $api = new BugHerd_Api('email@address.com', 'password');
@@ -68,6 +70,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::listUsers
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testListUsers() {
     $api = new BugHerd_Api($this->config['email'], $this->config['password']);
@@ -77,6 +80,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::listProjects
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testListProjects() {
     $api = new BugHerd_Api($this->config['email'], $this->config['password']);
@@ -86,6 +90,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::showProject
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testShowProject() {
     $project = new BugHerd_Project();
@@ -102,6 +107,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::createProject
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testCreateProject() {
     $project = new BugHerd_Project();
@@ -116,6 +122,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::updateProject
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testUpdateProject() {
     $project = new BugHerd_Project();
@@ -137,6 +144,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::deleteProject
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testDeleteProject() {
     $project = new BugHerd_Project();
@@ -157,6 +165,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::listTasks
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testListTasks() {
     $project = new BugHerd_Project();
@@ -180,6 +189,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::showTask
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testShowTask() {
     $project = new BugHerd_Project();
@@ -201,6 +211,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::createTask
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testCreateTask() {
     $project = new BugHerd_Project();
@@ -220,6 +231,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::updateTask
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testUpdateTask() {
     $project = new BugHerd_Project();
@@ -243,6 +255,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::listComments
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testListComments() {
     $project = new BugHerd_Project();
@@ -269,6 +282,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::showComment
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testShowComment() {
     $project = new BugHerd_Project();
@@ -293,6 +307,7 @@ class BugHerd_ApiTest extends PHPUnit_Framework_TestCase
 
   /**
    * @covers BugHerd_Api::createComment
+   * @covers BugHerd_Api::_sendRequest
    */
   public function testCreateComment() {
     $project = new BugHerd_Project();

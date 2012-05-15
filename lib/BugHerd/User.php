@@ -177,7 +177,7 @@ class BugHerd_User
    * Magic getter
    * @param string $name
    * @return mixed
-   * @throws Exception
+   * @throws InvalidArgumentException
    */
   public function __get($name) {
     switch ($name) {
@@ -206,7 +206,7 @@ class BugHerd_User
         return $this->getUpdated();
         break;
       default:
-        throw new Exception("Invalid property {$name}");
+        throw new InvalidArgumentException("Invalid property {$name}");
         break;
     }
   }
@@ -215,7 +215,7 @@ class BugHerd_User
    * Magic setter
    * @param string $name
    * @param mixed $value
-   * @throws Exception
+   * @throws InvalidArgumentException
    */
   public function __set($name, $value) {
     switch ($name) {
@@ -244,7 +244,7 @@ class BugHerd_User
         $this->setUpdated($value);
         break;
       default:
-        throw new Exception("Invalid property {$name}");
+        throw new InvalidArgumentException("Invalid property {$name}");
         break;
     }
   }
@@ -265,13 +265,14 @@ class BugHerd_User
    * Creates from xml
    * @param string|SimpleXMLElement $xml Xml string or SimpleXMLElement object
    * @return BugHerd_User
+   * @throws InvalidArgumentException
    */
   public static function fromXml($xml) {
     $user = new BugHerd_User();
     if (!($xml instanceof SimpleXMLElement)) {
-      $xml = simplexml_load_string($xml);
+      $xml = @simplexml_load_string($xml);
       if ($xml === false) {
-        throw new Exception("Invalid XML");
+        throw new InvalidArgumentException("Invalid XML");
       }
     }
     $user->setId($xml->id);

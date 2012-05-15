@@ -121,7 +121,13 @@ class BugHerd_Project
    * @return BugHerd_Project
    */
   public function setActive($active) {
-    $this->active = (bool) $active;
+    if(is_string($active)){
+      $active = ($active == 'true') ? true : false;
+    }elseif($active instanceof SimpleXMLElement){
+      $active = (string) $active;
+      $active = ($active == 'true') ? true : false;
+    }
+    $this->active = $active ? true : false;
     return $this;
   }
 
@@ -177,7 +183,7 @@ class BugHerd_Project
    * Magic getter
    * @param string $name
    * @return mixed
-   * @throws Exception
+   * @throws InvalidArgumentException
    */
   public function __get($name) {
     switch ($name) {
@@ -210,7 +216,7 @@ class BugHerd_Project
         return $this->getUpdated();
         break;
       default:
-        throw new Exception("Invalid property {$name}");
+        throw new InvalidArgumentException("Invalid property {$name}");
         break;
     }
   }
@@ -219,7 +225,7 @@ class BugHerd_Project
    * Magic setter
    * @param string $name
    * @param mixed $value
-   * @throws Exception
+   * @throws InvalidArgumentException
    */
   public function __set($name, $value) {
     switch ($name) {
@@ -252,7 +258,7 @@ class BugHerd_Project
         $this->setUpdated($value);
         break;
       default:
-        throw new Exception("Invalid property {$name}");
+        throw new InvalidArgumentException("Invalid property {$name}");
         break;
     }
   }
@@ -278,21 +284,22 @@ class BugHerd_Project
     if (!($xml instanceof SimpleXMLElement)) {
       $xml = @simplexml_load_string($xml);
       if ($xml === false) {
-        throw new Exception("Invalid XML");
+        throw new InvalidArgumentException("Invalid XML");
       }
     }
     $project->setId($xml->id);
     $project->setName($xml->name);
     $project->setDevUrl($xml->devurl);
-    if (isset($xml['is-active'])) {
-      $project->setActive($xml['is-active']);
+    $property = 'is-active';
+    if (property_exists($xml, 'is-active')) {
+      $project->setActive($xml->$property);
     }
     if (property_exists($xml, 'created-at')) {
       $property = 'created-at';
       $project->setCreated($xml->$property);
     }
     if (property_exists($xml, 'updated-at')) {
-      $property = 'created-at';
+      $property = 'updated-at';
       $project->setUpdated($xml->$property);
     }
     return $project;
