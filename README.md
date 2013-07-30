@@ -1,3 +1,7 @@
+[![Latest Stable Version](https://poser.pugx.org/bugherd/bugherd/v/stable.png)](https://packagist.org/packages/bugherd/bugherd)
+[![Total Downloads](https://poser.pugx.org/bugherd/bugherd/downloads.png)](https://packagist.org/packages/bugherd/bugherd)
+
+
 BugHerd API PHP Library
 =======================
 
